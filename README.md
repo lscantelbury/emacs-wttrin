@@ -12,13 +12,13 @@ Emacs frontend for weather web service [wttr.in].
 Set a default cities list for completion:
 
 ```elisp
-(setq wttrin-default-cities '("Taipei" "Tainan"))
+(setq wttrin-default-cities '("Manaus"))
 ```
 
 You can also specify default HTTP request Header for Accept-Language:
 
 ```elisp
-(setq wttrin-default-accept-language '("Accept-Language" . "zh-TW"))
+(setq wttrin-default-accept-language '("Accept-Language" . "pt-BR"))
 ```
 
 Then run `M-x wttrin` to get the information.
