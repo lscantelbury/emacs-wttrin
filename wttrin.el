@@ -4,6 +4,7 @@
 ;; Author: Carl X. Su <bcbcarl@gmail.com>
 ;;         ono hiroko (kuanyui) <azazabc123@gmail.com>
 ;; Version: 0.2.0
+;; Package-Version: 20170614.80654
 ;; Package-Requires: ((emacs "24.4") (xterm-color "1.0"))
 ;; Keywords: comm, weather, wttrin
 ;; URL: https://github.com/bcbcarl/emacs-wttrin
@@ -22,12 +23,12 @@
   :prefix "wttrin-"
   :group 'comm)
 
-(defcustom wttrin-default-cities '("Taipei" "Keelung" "Taichung" "Tainan")
+(defcustom wttrin-default-cities '("Manaus")
   "Specify default cities list for quick completion."
   :group 'wttrin
   :type 'list)
 
-(defcustom wttrin-default-accept-language '("Accept-Language" . "en-US,en;q=0.8,zh-CN;q=0.6,zh;q=0.4")
+(defcustom wttrin-default-accept-language '("Accept-Language" . "en-US,en;q=0.8,zh-CN;q=0.6,zh;q=0.4,pt-BR,q=0.8;")
   "Specify default HTTP request Header for Accept-Language."
   :group 'wttrin
   :type '(list)
@@ -61,8 +62,9 @@
         (re-search-forward "^$")
         (delete-region (point-min) (1+ (point)))
         (use-local-map (make-sparse-keymap))
-        (local-set-key "q" 'wttrin-exit)
-        (local-set-key "g" 'wttrin)
+	(shr-render-buffer buffer)
+	(switch-to-buffer "*html*")
+	(kill-buffer (format "*wttr.in - %s*" city-name))
         (setq buffer-read-only t)))))
 
 ;;;###autoload
